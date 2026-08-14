@@ -1158,8 +1158,18 @@
   var waDismissed = false;
 
   setTimeout(function(){
-    if (!waDismissed) waBubble.classList.add('show');
+    // Don't interrupt if the visitor has already scrolled away from the top —
+    // the bubble is fixed to the corner and would otherwise sit on top of
+    // whatever's underneath (e.g. the footer links) wherever they've scrolled to.
+    if (!waDismissed && window.scrollY < 400) waBubble.classList.add('show');
   }, 5000);
+
+  // Fixed-position popups don't move with the page, so keep this one from
+  // ever blocking a tap on content further down: dismiss it the moment the
+  // visitor scrolls. The round WhatsApp button itself stays put and tappable.
+  window.addEventListener('scroll', function(){
+    if (waBubble.classList.contains('show')) waBubble.classList.remove('show');
+  }, { passive:true });
 
   waClose.addEventListener('click', function(e){
     e.preventDefault();
