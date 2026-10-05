@@ -10,6 +10,13 @@
 <meta property="og:description" content="We direct profitable growth for e-commerce brands through strategy, creative, and performance." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:image" content="https://www.direxlab.com/icon-1024.png" />
+<meta property="og:url" content="https://www.direxlab.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,6 +25,9 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Direx Lab",
+  "url": "https://www.direxlab.com/",
+  "logo": "https://www.direxlab.com/icon-1024.png",
+  "image": "https://www.direxlab.com/icon-1024.png",
   "description": "Direx Lab directs profitable growth for e-commerce brands through performance marketing, CRO, creative strategy, and business development.",
   "email": "hello@direxlab.com",
   "areaServed": "Worldwide"
@@ -245,6 +255,8 @@
   .reveal.in{ opacity:1; transform:translateY(0); filter:blur(0); }
 
   section{ position:relative; border-bottom:1px solid var(--line); }
+  /* Keep section headings clear of the fixed header (navbar + spots strip) when jumping via links. */
+  section[id]{ scroll-margin-top:3.5rem; }
   section.no-border{ border-bottom:none; }
   .section-pad{ padding-block:7rem; }
   @media (min-width:768px){ .section-pad{ padding-block:9rem; } }
@@ -1169,11 +1181,11 @@
   });
   document.getElementById('spots-strip').style.setProperty('--spots-pct', (CLIENT_SPOTS.taken / CLIENT_SPOTS.total * 100) + '%');
 
-  // Popup: opens shortly after every page load.
+  // Popup: opens 7 seconds after every page load.
   var spotsModal = document.getElementById('spots-modal');
   function openSpots(){ spotsModal.classList.add('show'); }
   function closeSpots(){ spotsModal.classList.remove('show'); }
-  setTimeout(openSpots, 1500);
+  setTimeout(openSpots, 7000);
 
   document.getElementById('spots-close').addEventListener('click', closeSpots);
   spotsModal.addEventListener('click', function(e){ if (e.target === spotsModal) closeSpots(); });
